@@ -6,33 +6,28 @@ public class Robot {
     private int posX = 0;
     private int posY = 0;
     private int terrain[] = {5,5};
-    private Boolean isCommandInvalid = false;
+
 
     public void moveRobot(String strCommand) {
-        CheckCommand(strCommand);
-        if(isCommandInvalid){
-            //Send Bad Request
-            return;
-        }
-        ExecuteRobotMovement(strCommand);
+        executeRobotMovement(strCommand);
     }
 
-    public String FinalPosition(){
+    public String finalPosition(){
         actualPosition = "("+posX+","+posY+","+robotFront+")\n";
         return actualPosition;
     }
-    void ExecuteRobotMovement(String strCommand){
+    void executeRobotMovement(String strCommand){
         for (int i = 0; i < strCommand.length(); i++) {
             if (strCommand.charAt(i) == 'M') {
-                MoveStraight();
+                moveStraight();
             }else if (strCommand.charAt(i) == 'L') {
-                TurnLeft();
+                turnLeft();
             }else if(strCommand.charAt(i)=='R'){
-                TurnRight();
+                turnRight();
             }
         }
     }
-    void MoveStraight(){
+    void moveStraight(){
         switch (robotFront){
             case "N":
                 if(posY!=terrain[1]){
@@ -56,7 +51,7 @@ public class Robot {
                 break;
         }
     }
-    void TurnLeft(){
+    void turnLeft(){
         switch (robotFront){
             case "N":
                 robotFront = "W";
@@ -72,7 +67,7 @@ public class Robot {
                 break;
         }
     }
-    void TurnRight(){
+    void turnRight(){
         switch (robotFront){
             case "N":
                 robotFront = "E";
@@ -88,18 +83,17 @@ public class Robot {
                 break;
         }
     }
-    void CheckCommand(String strCommand){
+    public Boolean checkIfCommandIsValid(String strCommand){
         for (int i = 0; i < strCommand.length(); i++) {
             switch (strCommand.charAt(i)){
                 case 'M':
                 case 'L':
                 case 'R':
-                    break;
+                    continue;
                 default:
-                    isCommandInvalid = true;
-                    break;
+                    return false;
             }
-        }
+        } return  true;
     }
 
 }

@@ -18,37 +18,37 @@ public class RobotTest {
     void TestOne(){
         robot.moveRobot("MML");
 
-        assertEquals("(0,2,W)",robot.FinalPosition());
+        assertEquals("(0,2,W)",robot.finalPosition());
     }
 
     @Test
     void TestTwo(){
         robot.moveRobot("MMRMMRMM");
-        assertEquals("(2,0,S)",robot.FinalPosition());
+        assertEquals("(2,0,S)",robot.finalPosition());
     }
 
     @Test
     void TestThree(){
         robot.moveRobot("MML");
-        assertEquals("(0,2,W)",robot.FinalPosition());
+        assertEquals("(0,2,W)",robot.finalPosition());
     }
 
     @Test
     void TestFour(){
         robot.moveRobot("MML");
-        assertEquals("(0,2,W)",robot.FinalPosition());
+        assertEquals("(0,2,W)",robot.finalPosition());
     }
 
     @Test
     void TestInvalidCommand(){
         robot.moveRobot("AAAA");
-        assertEquals("(0,0,N)",robot.FinalPosition());
+        assertEquals("(0,0,N)",robot.finalPosition());
     }
 
     @Test
     void TestInvalidPosition(){
         robot.moveRobot("MMMMMMMMMMMMM");
-        assertEquals("(0,5,N)",robot.FinalPosition());
+        assertEquals("(0,5,N)",robot.finalPosition());
     }
 
 }
